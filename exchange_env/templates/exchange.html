@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pl">
+    <head>
+        <meta charset="utf-8">
+        <title>$$$ ECHANGE $$$</title>
+
+    </head>
+    <body>
+        <h1> Echange rates from NBP</h1>
+
+ <form method="POST">
+  <label for="waluta">Choose currency:</label>
+  <select id="waluta" name="waluta"  >
+        {% for item in data %}
+        <option value=" {{ item['currency'] }}"> {{ item['currency'] }}</option>
+         {% endfor %}
+  </select>
+     <br>
+     <label for="fname">Amount:</label>
+  <input type="text" id="ilosc"  name="ilosc" value= {{ilosc }} >
+
+  <input type="submit" value="Przelicz">
+
+     <br>
+</form>
+    <p style="color:blue;;"> {{info}}</p>
+    <p  style="color:darkblue;;">{{opis}} </p>
+
+  <table>
+  <tr>
+    <th>Nazwa waluty</th>
+    <th>skrót</th>
+    <th>kupno</th>
+      <th>sprzedaż</th>
+  </tr>
+       {% for item in data %}
+  <tr>
+    <td>{{ item['currency'] }}</td>
+    <td>{{ item['code'] }}</td>
+    <td>{{ item['bid'] }}</td>
+      <td>{{ item['ask'] }}</td>
+  </tr>
+      {% endfor %}
+  </table>
+
+    </body>
+</html>
